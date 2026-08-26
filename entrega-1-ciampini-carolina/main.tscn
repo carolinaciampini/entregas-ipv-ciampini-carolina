@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://6as121jre3m2"]
+
+[ext_resource type="PackedScene" uid="uid://bxrcy3a5s8if6" path="res://entities/player.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://b7nn5280nylps" path="res://entities/player.gd" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://c2w4qaq4puixg" path="res://assets/background.png" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://bhuwlvhpqqsso" path="res://background.gd" id="4_lquwl"]
+[ext_resource type="Texture2D" uid="uid://cvvjlm4ldkxu3" path="res://assets/floor.png" id="5_lquwl"]
+
+[node name="Main" type="Node" unique_id=2143341994]
+
+[node name="background" type="TextureRect" parent="." unique_id=832065619]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 5.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_1bvp3")
+script = ExtResource("4_lquwl")
+
+[node name="player" parent="." unique_id=2093414938 instance=ExtResource("1_ig7tw")]
+position = Vector2(569, 507)
+script = ExtResource("2_0xm2m")
+
+[node name="floor" type="TextureRect" parent="." unique_id=1842328604]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -108.0
+offset_right = 10.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_lquwl")
