@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cnflwsa05xige"]
+
+[ext_resource type="Script" uid="uid://dx4l3rhbon78i" path="res://projectile.gd" id="1_a85iw"]
+
+[node name="Projectile" type="Sprite2D" unique_id=924252243]
+script = ExtResource("1_a85iw")
+
+[node name="Timer" type="Timer" parent="." unique_id=1099864735]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
