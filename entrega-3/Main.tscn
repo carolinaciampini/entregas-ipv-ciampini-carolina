@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://dnc5muoeyfwah"]
+
+[ext_resource type="PackedScene" uid="uid://vqu8xh4hhedx" path="res://entities/player/Player.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://cwss7yl8udbui" path="res://assets/textures/background.png" id="2"]
+[ext_resource type="Script" uid="uid://bkmvt4ya2xfm8" path="res://Main.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://bscjwoaotlcqc" path="res://entities/enemies/Turret.tscn" id="4"]
+[ext_resource type="Script" uid="uid://ertnqm8kd3lw" path="res://entities/enemies/TurretsSpawner.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://7ixrgbfhdfe3" path="res://entities/world/floor.tscn" id="6_floor"]
+[ext_resource type="PackedScene" uid="uid://c3q4x5y6w708a" path="res://entities/world/Block.tscn" id="7_block"]
+[ext_resource type="PackedScene" uid="uid://dmh4v8q2wx1y9" path="res://entities/world/Platform.tscn" id="8_platf"]
+[ext_resource type="PackedScene" uid="uid://c8v4w2x7y1z9a" path="res://entities/world/Triangle.tscn" id="9_triang"]
+[ext_resource type="PackedScene" uid="uid://c6v2w8x1y4z7a" path="res://entities/world/Wall.tscn" id="10_wall"]
+[ext_resource type="PackedScene" uid="uid://c5v8w1x4y7z2a" path="res://entities/world/Star.tscn" id="11_star"]
+
+[node name="Main" type="Node" unique_id=1810903467]
+script = ExtResource("3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1658317788]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=1933098334]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2")
+expand_mode = 1
+
+[node name="Player" parent="." unique_id=896916843 instance=ExtResource("1")]
+position = Vector2(92, 526)
+JUMP_SPEED = -500.0
+GRAVITY = 10.0
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=330692407]
+
+[node name="TurretsSpawner" type="Node2D" parent="." unique_id=2084417091]
+position = Vector2(1925, -103)
+script = ExtResource("5")
+turret_scene = ExtResource("4")
+
+[node name="Turret" parent="." unique_id=420667372 instance=ExtResource("4")]
+position = Vector2(1829, 529)
+
+[node name="Wall" parent="." unique_id=391827461 instance=ExtResource("10_wall")]
+position = Vector2(-30, 325.5)
+
+[node name="Floor" parent="." unique_id=629896251 instance=ExtResource("6_floor")]
+position = Vector2(400, 560)
+
+[node name="Floor2" parent="." unique_id=1413222144 instance=ExtResource("6_floor")]
+position = Vector2(1200, 560)
+
+[node name="Floor3" parent="." unique_id=1180121421 instance=ExtResource("6_floor")]
+position = Vector2(2000, 560)
+
+[node name="Triangle" parent="." unique_id=166434594 instance=ExtResource("9_triang")]
+position = Vector2(1704, 560)
+
+[node name="Triangle2" parent="." unique_id=743338515 instance=ExtResource("9_triang")]
+position = Vector2(303, 614)
+rotation = 0.7853982
+
+[node name="Triangle3" parent="." unique_id=944200363 instance=ExtResource("9_triang")]
+position = Vector2(739, 614)
+rotation = -0.7853982
+
+[node name="platform" parent="." unique_id=809901260 instance=ExtResource("8_platf")]
+position = Vector2(520.5, 513.5)
+scale = Vector2(2.01, 1)
+
+[node name="platform2" parent="." unique_id=180615317 instance=ExtResource("8_platf")]
+position = Vector2(1871.25, 419)
+
+[node name="platform3" parent="." unique_id=1783489485 instance=ExtResource("8_platf")]
+position = Vector2(2084, 290)
+
+[node name="platform4" parent="." unique_id=1738245345 instance=ExtResource("8_platf")]
+position = Vector2(1755, 202)
+
+[node name="Block" parent="." unique_id=1179638133 instance=ExtResource("7_block")]
+position = Vector2(505, 487)
+
+[node name="Block2" parent="." unique_id=1179638134 instance=ExtResource("7_block")]
+position = Vector2(536, 487)
+
+[node name="Block3" parent="." unique_id=1179638135 instance=ExtResource("7_block")]
+position = Vector2(505, 448)
+
+[node name="Block4" parent="." unique_id=1179638136 instance=ExtResource("7_block")]
+position = Vector2(536, 448)
+
+[node name="Block5" parent="." unique_id=1607522672 instance=ExtResource("7_block")]
+position = Vector2(1780, 173.5)
+
+[node name="Star" parent="." unique_id=771829301 instance=ExtResource("11_star")]
+position = Vector2(1776, 30)

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://vqu8xh4hhedx"]
+
+[ext_resource type="Script" uid="uid://m5cj6f1avxxs" path="res://entities/player/Player.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://j14wrxanwhni" path="res://assets/textures/player.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://doiohr46lpdc7" path="res://assets/textures/cannon.png" id="3"]
+[ext_resource type="Script" uid="uid://dw1dbb5kq664d" path="res://entities/player/Cannon.gd" id="4"]
+[ext_resource type="PackedScene" path="res://entities/player/PlayerProjectile.tscn" id="5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h4t55"]
+radius = 32.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1357076656]
+collision_layer = 2
+script = ExtResource("1")
+PUSH_FORCE = 80.0
+
+[node name="Body" type="Sprite2D" parent="." unique_id=2710396]
+texture = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1580326710]
+shape = SubResource("CircleShape2D_h4t55")
+
+[node name="Cannon" type="Sprite2D" parent="." unique_id=1320899847]
+texture = ExtResource("3")
+script = ExtResource("4")
+projectile_scene = ExtResource("5")
+
+[node name="CannonTip" type="Marker2D" parent="Cannon" unique_id=1687037889]
+position = Vector2(15, 0)
