@@ -7,10 +7,10 @@
 [ext_resource type="Script" uid="uid://ertnqm8kd3lw" path="res://entities/enemies/TurretsSpawner.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://7ixrgbfhdfe3" path="res://entities/world/floor.tscn" id="6_floor"]
 [ext_resource type="PackedScene" uid="uid://c3q4x5y6w708a" path="res://entities/world/Block.tscn" id="7_block"]
-[ext_resource type="PackedScene" uid="uid://dmh4v8q2wx1y9" path="res://entities/world/Platform.tscn" id="8_platf"]
-[ext_resource type="PackedScene" uid="uid://c8v4w2x7y1z9a" path="res://entities/world/Triangle.tscn" id="9_triang"]
-[ext_resource type="PackedScene" uid="uid://c6v2w8x1y4z7a" path="res://entities/world/Wall.tscn" id="10_wall"]
-[ext_resource type="PackedScene" uid="uid://c5v8w1x4y7z2a" path="res://entities/world/Star.tscn" id="11_star"]
+[ext_resource type="PackedScene" uid="uid://dmh4v8q2wx10a" path="res://entities/world/Platform.tscn" id="8_platf"]
+[ext_resource type="PackedScene" uid="uid://c8v4w2x7y11aa" path="res://entities/world/Triangle.tscn" id="9_triang"]
+[ext_resource type="PackedScene" uid="uid://c6v2w8x1y407a" path="res://entities/world/Wall.tscn" id="10_wall"]
+[ext_resource type="PackedScene" uid="uid://c5v8w1x4y702a" path="res://entities/world/Star.tscn" id="11_star"]
 
 [node name="Main" type="Node" unique_id=1810903467]
 script = ExtResource("3")
