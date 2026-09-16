@@ -1,0 +1,144 @@
+[gd_scene load_steps=13 format=3 uid="uid://vqu8xh4hhedx"]
+
+[ext_resource type="Script" path="res://entities/player/Player.gd" id="1_player"]
+[ext_resource type="Texture2D" path="res://assets/textures/player/player_sheet.png" id="2_player_sheet"]
+[ext_resource type="Script" path="res://entities/player/Cannon.gd" id="3_cannon"]
+[ext_resource type="PackedScene" path="res://entities/player/PlayerProjectile.tscn" id="4_projectile"]
+[ext_resource type="Texture2D" path="res://assets/textures/player/staff.png" id="5_staff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_player"]
+size = Vector2(22, 30)
+
+[sub_resource type="Animation" id="Animation_reset"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_idle"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+	"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+	"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+	"update": 1,
+	"values": [0, 1, 2, 3, 4, 5, 4, 1]
+}
+
+[sub_resource type="Animation" id="Animation_jump"]
+resource_name = "jump"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [18, 18, 19, 20]
+}
+
+[sub_resource type="Animation" id="Animation_walk"]
+resource_name = "walk"
+length = 0.72
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+	"times": PackedFloat32Array(0, 0.09, 0.18, 0.27, 0.36, 0.45, 0.54, 0.63),
+	"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+	"update": 1,
+	"values": [9, 10, 11, 12, 13, 14, 15, 16]
+}
+
+[sub_resource type="Animation" id="Animation_die"]
+resource_name = "die"
+length = 0.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyPivot/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [27, 28, 29, 30, 31, 32, 33, 34, 35]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_player"]
+_data = {
+&"RESET": SubResource("Animation_reset"),
+&"die": SubResource("Animation_die"),
+&"idle": SubResource("Animation_idle"),
+&"jump": SubResource("Animation_jump"),
+&"walk": SubResource("Animation_walk")
+}
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
+floor_snap_length = 16.0
+script = ExtResource("1_player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -7.5)
+shape = SubResource("RectangleShape2D_player")
+
+[node name="BodyAnimations" type="AnimationPlayer" parent="."]
+libraries/ = SubResource("AnimationLibrary_player")
+
+[node name="BodyPivot" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="BodyPivot"]
+texture_filter = 1
+position = Vector2(-2, -11)
+texture = ExtResource("2_player_sheet")
+hframes = 9
+vframes = 5
+
+[node name="Cannon" type="Node2D" parent="."]
+position = Vector2(0, -7)
+script = ExtResource("3_cannon")
+projectile_scene = ExtResource("4_projectile")
+
+[node name="Sprite2D" type="Sprite2D" parent="Cannon"]
+position = Vector2(5, 0)
+rotation = 1.5707964
+texture = ExtResource("5_staff")
+
+[node name="CannonTip" type="Marker2D" parent="Cannon"]
+position = Vector2(12, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -7)
+position_smoothing_enabled = true
+position_smoothing_speed = 5.0

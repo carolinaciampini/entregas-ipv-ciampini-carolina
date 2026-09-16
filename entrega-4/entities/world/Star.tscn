@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c5v8w1x4y702a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_star"]
+radius = 22.0
+
+[node name="Star" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_star")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0.92, 0.05, 1)
+polygon = PackedVector2Array(0, -30, 8, -10, 29, -9, 12, 4, 18, 24, 0, 13, -18, 24, -12, 4, -29, -9, -8, -10)
